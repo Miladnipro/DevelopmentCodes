@@ -64,20 +64,19 @@ for i in range(0,count):
   cv2.imwrite("cropped%d.png" % i, cropped_image)
 cropping=[]
 ##
-
 import re
 pytesseract.pytesseract.tesseract_cmd = r'C:\Users\milaghas\AppData\Local\Programs\Tesseract-OCR\tesseract.exe'
-image = cv2.imread("cropped1.png")
+image = cv2.imread("cropped0.png")
 median = cv2.medianBlur(image,5)
 gray = cv2.cvtColor(median, cv2.COLOR_BGR2GRAY)
 # thresh = cv2.adaptiveThreshold(median, 100, cv2.ADAPTIVE_THRESH_MEAN_C, cv2.THRESH_BINARY, 13, 2)
-# cv2.imshow("gray", gray);
+cv2.imshow("gray", gray);
 # cv2.imshow("thresh", thresh);
 cv2.imshow("image", image);
 cv2.waitKey(0);
 # convolved_rgb_sharpen = cv2.convolver_rgb(image, sharpen, 1)
 
-text = pytesseract.image_to_string(image,config="--psm 6")
+text = pytesseract.image_to_string(gray,config="--psm 6")
 # text = pytesseract.image_to_string(gray,config="--psm 6")
 print(text)
 ##
